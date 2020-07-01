@@ -10,5 +10,6 @@ namespace StudentMgtAPI.Repository
         void CreateStudent(StudentModel studentModel);
         void DeleteStudent(StudentModel studentModel);
         void UpdateStudent(StudentModel studentModel);
+        bool SaveChanges();
     }
 }
