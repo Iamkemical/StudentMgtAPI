@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using StudentMgtAPI.DatabaseContext;
-using StudentMgtAPI.DatabaseContexts;
+
 
 namespace StudentMgtAPI
 {
