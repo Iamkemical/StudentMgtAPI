@@ -52,7 +52,7 @@ namespace StudentMgtAPI.Services
 
         public void UpdateStudent(StudentModel studentModel)
         {
-            throw new System.NotImplementedException();
+            //DoNothing
         }
     }
 }

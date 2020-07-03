@@ -33,14 +33,13 @@ namespace StudentMgtAPI
         {
             services.AddDbContextPool<StudentDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("StudentConnection")));
-
-            services.AddScoped<IStudentRepo, StudentService>();
-
+            
             services.AddControllers().AddNewtonsoftJson(s =>
             s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
+            
+            services.AddScoped<IStudentRepo, StudentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
