@@ -7,11 +7,14 @@ using StudentMgtAPI.Models;
 using StudentMgtAPI.Repository;
 using StudentMgtAPI.Dtos;
 using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace StudentMgtAPI.Controllers
 {
     [ApiController]
     [Route("api/{controller}")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class StudentController : ControllerBase
     {
         private readonly IStudentRepo _studentRepo;
