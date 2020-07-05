@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
 using StudentMgtAPI.DatabaseContext;
 using StudentMgtAPI.Models;
@@ -72,25 +73,62 @@ namespace StudentMgtAPI
                 };
             });
 
+                services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Student Mgt API",
+                    Description = "A dockerized microservices for managing students",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Gabriel Isaac",
+                        Email = string.Empty,
+                        Url = new Uri("https://twitter.com/iamkemical1"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Use under LICX",
+                        Url = new Uri("https://example.com/license"),
+                    }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Student Mgt Service V1");
+                c.RoutePrefix = string.Empty;
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
             app.UseHttpsRedirection();
-
+           
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Swagger}/{action=Index}/{id?}");
             });
         }
     }

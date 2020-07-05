@@ -20,7 +20,14 @@ namespace StudentMgtAPI
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    if (Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true")
+                    {
+                        webBuilder.UseUrls("https://*:5001", "http://*:5000");
+                    }
+                    else
+                        webBuilder.UseUrls("https://127.0.0.1:5001", "http://127.0.0.1:5000");
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseKestrel();
                 });
     }
 }

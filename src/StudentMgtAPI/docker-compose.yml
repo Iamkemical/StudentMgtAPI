@@ -1,0 +1,36 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+version: '3.4'
+
+networks:
+    studentmgtapi-net:
+
+volumes:
+    mssql-server-linux-data:
+
+services: 
+    studentmgtapi:
+        build:
+            context: .
+            dockerfile: DockerFile
+        container_name: studentmgtapi
+        restart: always
+        ports:
+            - "5000:5000"
+            - "5001:5001"
+        networks:
+            - studentmgtapi-net
+        deploy:
+            restart_policy:
+                condition: on-failure
+                delay: 10s
+
+    sql-server:
+        image: mcr.microsoft.com/mssql/server
+        container_name: sql-server
+        environment:
+            SA_PASSWORD: "Stron9pa55word"
+            ACCEPT_EULA: "Y"
+        volumes:
+            - mssql-server-linux-data:/var/opt/mssql/data
+        networks:
+            - studentmgtapi-net
