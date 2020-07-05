@@ -73,7 +73,7 @@ A successful response:
 
     {
         "userId": 1,
-        "firstName": "Gabrile",
+        "firstName": "Gabriel",
         "lastName": "Isaac",
         "password": null,
         "userName": "Iamkemical",
