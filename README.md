@@ -62,7 +62,7 @@ SwaggerUI - go to this URL - http://localhost:5000/swagger/index
 # Configure the bearer token to access the microservice
 Without an authorization header having the bearer token the client would get a 401 unauthorized call.
 
-To resolve this go enter http://localhost:5000/authstudent and enter the following dummy username and password as JSON
+To resolve this enter http://localhost:5000/authstudent and send a post request with the following dummy username and password as JSON
 
     {
         "UserName" = "Iamkemical",
