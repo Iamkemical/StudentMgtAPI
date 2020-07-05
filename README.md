@@ -7,20 +7,32 @@ VSCode
 # Development technologies used
 C# - For performing CRUD (Create, Read, Update, and Delete) operations on the database.
 EntityFrameworkCore - For handling SQL queries from the internal representation of the data (Model) to the database.
+
 MSSQL- Relational Database used for storing data from the Model.
+
 SWAGGERUI - For documenting the CRUD operation of the API.
+
 JWT - For issuing authentication tokens from the server to the client.
+
 AutoMapper - For creating source and destination maps for the DTOs (Data Transfer Objects)
+
 DOCKER - Docker is used for containerizing the microservice
 
 # Dependencies installed via the CLI on VSCode
 Automapper.Extensions.Microsoft.DependencyInjection
+
 Microsoft.AspNetCore.Authentication.JwtBearer
+
 Microsoft.AspNetCore.JsonPatch
+
 Microsoft.AspNetCore.Mvc.NewtonsoftJson
+
 Microsoft.EntityFrameworkCore.Design
+
 Microsoft.EntityFrameworkCore.SqlServer
+
 Microsoft.EntityFrameworkCore.Tools
+
 Swashbuckle.AspNetCore
 
 # Architectural pattern
