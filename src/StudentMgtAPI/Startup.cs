@@ -44,7 +44,7 @@ namespace StudentMgtAPI
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             
-            services.AddScoped<IStudentRepo, StudentService>();
+            services.AddTransient<IStudentRepo, StudentService>();
 
               //For JWT...APPSettings.json and AppSettings.cs
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -54,7 +54,7 @@ namespace StudentMgtAPI
             var appSetting = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSetting.SecretKey);
 
-            services.AddScoped<IAuthStudentRepo, AuthStudentService>();
+            services.AddTransient<IAuthStudentRepo, AuthStudentService>();
 
             services.AddAuthentication(auth =>
             {

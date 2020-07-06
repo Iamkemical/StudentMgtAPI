@@ -28,6 +28,7 @@ namespace StudentMgtAPI.Controllers
 
         //GET api/student
         [HttpGet]
+        
         public ActionResult <IEnumerable<StudentModel>> GetAllStudent()
         {
            var student = _studentRepo.GetAllStudent();
