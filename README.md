@@ -57,7 +57,7 @@ docker-compose up -d --build(if you and running for the first time)
 
 docker-compose up -d
 
-SwaggerUI - go to this URL - http://localhost:5000/swagger/index
+SwaggerUI - go to this URL - http://127.0.0.1:5000
 
 # Configure the bearer token to access the microservice
 Without an authorization header having the bearer token the client would get a 401 unauthorized call.
